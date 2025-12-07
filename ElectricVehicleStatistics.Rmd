@@ -1,0 +1,51 @@
+---
+title: "ElectricVehicleStatistics"
+author: "metadata"
+date: "2025-12-07"
+output: html_document
+---
+This package integrates a dataset about the population of electric cars that it contains the make, model, type of electric car, clean fuel,and the electric range. For this package I created three data visualizations about the type of 
+electric cars, alternative clean fuel, and the electric range to get an analysis on the type of electric cars is being used, type of battery researched for longevity for electric cars, and type of car model for long-lasting energy.
+I think the three visualizations are important to consider on what type of electric cars is analyzed, depending on battery life and clean, alternative energy.
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(readr)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r ElectricVehicleStatistics}
+# Import the dataset and assign it to 'Electric_Vehicle_Data'
+Electric_Vehicle_Data <- read_csv("C:/Users/tahsi/Downloads/Electric_Vehicle_Population_Data.csv")
+
+# View the imported dataset
+View(Electric_Vehicle_Data)
+
+# Show the structure of the dataset
+str(Electric_Vehicle_Data)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r ElectricVehicleStatistics, echo=FALSE}
+# Three simple ggplot visualizations
+Electric_Vehicle_Range <- ggplot(Electric_Vehicle_Data, aes(x = Electric_Vehicle_Data$`Electric Vehicle Type`, y = Electric_Vehicle_Data$`Electric Range`, fill = Electric_Vehicle_Data$`Electric Vehicle Type`)) + geom_col() + labs(x = "Electric Vehicle Type", y = "Electric Range") + ggtitle("Electric Vehicles by Range")
+Electric_Vehicle_Range + guides(fill = guide_legend(title = "Electric Vehicle type"))
+
+Clean_fuel <- ggplot(Electric_Vehicle_Data, aes(x = Electric_Vehicle_Data$`Clean Alternative Fuel Vehicle (CAFV) Eligibility`, fill = Electric_Vehicle_Data$`Clean Alternative Fuel Vehicle (CAFV) Eligibility`)) + geom_bar() + labs(x = "Clean Alternative Fuel Vehicle (CAFV) Elgibility") + ggtitle("Clean Alternative Fuel Vehicle by Count")
+Clean_fuel + guides(fill = guide_legend(title = "Clean Alternative Fuel Vehicle Eligbility"))
+
+Electric_Range <- ggplot(Electric_Vehicle_Data, aes(y = Electric_Vehicle_Data$Make, x = Electric_Vehicle_Data$`Electric Range`)) + geom_col() + ggtitle("Electric Range by Make") + labs(y = "Make", x = "Electric Range")
+Electric_Range
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+Using R Markdown offers significant advantages over writing plain reports. With R Markdown, your analysis and your explanation live in the same document, ensuring that results always stay up to date. When your data changes, you simply re-knit the document to regenerate all tables, plots, and conclusions. This reduces manual work and eliminates inconsistencies. Compared to writing plain reports—where plots and numbers must be copied in manually—R Markdown provides a cleaner, more efficient, and more reproducible workflow, especially for data-driven projects.
