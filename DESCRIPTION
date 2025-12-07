@@ -1,0 +1,25 @@
+Package: ElectricVehicleStatistics
+Type: Package
+Title: Electric Vehicle Data Visualization
+Version: 0.0.0.9000
+Authors@R: c(
+    person(
+      "Tahsin", "Khandaker",
+      email = "tahsinkhandaker@usf.edu",
+      role = c("aut", "cre")
+    )
+  )
+Description: This package integrates a dataset about the population of electric cars that it contains the make, model, type of electric car, clean fuel,and the electric range. For this package I created three data visualizations about the type of 
+electric cars, alternative clean fuel, and the electric range to get an analysis on the type of electric cars is being used, type of battery researched for longevity for electric cars, and type of car model for long-lasting energy.
+I think the three visualizations are important to consider on what type of electric cars is analyzed, depending on battery life and clean, alternative energy.
+Depends: R (>= 3.1.2)
+Imports:
+    ggplot2
+License: CC0
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/tahsinkhandaker/Tahsin
+BugReports: https://github.com/tahsinkhandaker/Tahsin/issues
+Suggests: 
+    testthat,
+    knitr
